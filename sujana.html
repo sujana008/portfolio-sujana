@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sujana Shahrin | Aspiring Data Scientist</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --light-blue: #a8d8ea;
+            --baby-pink: #ffd1dc;
+            --baby-yellow: #fff9c4;
+            --soft-brown: #d7ccc8;
+            --mint-green: #c8e6c9;
+            --dark-green: #388e3c;
+            --dark-brown: #5d4037;
+            --white: #ffffff;
+            --text-color: #333333;
+        }
+        
+        body {
+            background: linear-gradient(135deg, var(--light-blue) 0%, var(--mint-green) 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        .profile-card {
+            background-color: var(--white);
+            border-radius: 25px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            width: 100%;
+            max-width: 1100px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            transition: transform 0.5s ease;
+        }
+        
+        .profile-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .profile-header {
+            background: linear-gradient(135deg, var(--light-blue) 0%, var(--mint-green) 100%);
+            color: var(--text-color);
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .profile-header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.2" d="M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,213.3C672,192,768,128,864,128C960,128,1056,192,1152,192C1248,192,1344,128,1392,96L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .profile-photo-container {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 5px solid rgba(255, 255, 255, 0.5);
+            margin: 0 auto 25px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            background: linear-gradient(135deg, var(--baby-pink) 0%, var(--baby-yellow) 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .profile-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .photo-placeholder {
+            color: var(--text-color);
+            text-align: center;
+            font-size: 16px;
+            padding: 10px;
+            font-weight: 500;
+        }
+        
+        .profile-name {
+            font-size: 42px;
+            margin-bottom: 10px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 1;
+            color: var(--dark-brown);
+        }
+        
+        .profile-title {
+            font-size: 22px;
+            opacity: 0.9;
+            font-weight: 500;
+            position: relative;
+            z-index: 1;
+            margin-bottom: 15px;
+            color: var(--dark-green);
+        }
+        
+        .university {
+            background: rgba(255, 255, 255, 0.5);
+            padding: 8px 20px;
+            border-radius: 30px;
+            display: inline-block;
+            font-size: 16px;
+            position: relative;
+            z-index: 1;
+            backdrop-filter: blur(5px);
+            color: var(--dark-brown);
+            font-weight: 500;
+        }
+        
+        .profile-content {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 40px 30px;
+            background: var(--white);
+            gap: 30px;
+        }
+        
+        .left-section, .right-section {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .section-title {
+            color: var(--dark-green);
+            font-size: 24px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid;
+            border-image: linear-gradient(to right, var(--dark-green), var(--light-blue)) 1;
+            display: flex;
+            align-items: center;
+        }
+        
+        .section-title i {
+            margin-right: 10px;
+            font-size: 26px;
+        }
+        
+        .about-text {
+            line-height: 1.7;
+            color: var(--text-color);
+            margin-bottom: 25px;
+            font-size: 16px;
+        }
+        
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .skill-chip {
+            background: linear-gradient(135deg, var(--baby-pink) 0%, var(--baby-yellow) 100%);
+            color: var(--text-color);
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 500;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .skill-chip:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+        
+        .contact-info {
+            list-style-type: none;
+            margin-bottom: 30px;
+        }
+        
+        .contact-info li {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-info li:hover {
+            background: #e9ecef;
+            transform: translateX(5px);
+        }
+        
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--light-blue) 0%, var(--mint-green) 100%);
+            color: var(--text-color);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 15px;
+            font-size: 20px;
+        }
+        
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .contact-type {
+            font-weight: 600;
+            color: var(--dark-green);
+            font-size: 14px;
+        }
+        
+        .contact-value {
+            font-size: 16px;
+            color: var(--text-color);
+        }
+        
+        .goals-section {
+            background: linear-gradient(135deg, var(--light-blue) 0%, var(--mint-green) 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .goals-title {
+            color: var(--dark-green);
+            font-size: 20px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .goals-text {
+            line-height: 1.6;
+            color: var(--text-color);
+        }
+        
+        .languages-section {
+            margin-bottom: 30px;
+        }
+        
+        .language-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .language-item {
+            background: linear-gradient(135deg, var(--light-blue) 0%, var(--mint-green) 100%);
+            padding: 15px 25px;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .language-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .language-flag {
+            font-size: 24px;
+        }
+        
+        .language-name {
+            font-weight: 600;
+            color: var(--dark-green);
+        }
+        
+        .language-level {
+            font-size: 14px;
+            color: var(--dark-brown);
+        }
+        
+        .interests-section {
+            margin-top: 30px;
+        }
+        
+        .interests-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .interest-item {
+            background: linear-gradient(135deg, var(--baby-yellow) 0%, var(--soft-brown) 100%);
+            padding: 15px;
+            border-radius: 12px;
+            flex: 1;
+            min-width: 120px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .interest-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+        }
+        
+        .interest-icon {
+            font-size: 24px;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .leadership-section {
+            margin-top: 30px;
+        }
+        
+        .leadership-item {
+            background: linear-gradient(135deg, var(--mint-green) 0%, var(--light-blue) 100%);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .leadership-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .leadership-title {
+            font-weight: 600;
+            color: var(--dark-green);
+            margin-bottom: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .social-link {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--light-blue) 0%, var(--mint-green) 100%);
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .social-link:hover {
+            transform: translateY(-5px) rotate(10deg);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .decoration {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.1;
+            z-index: 0;
+        }
+        
+        .decoration-1 {
+            width: 150px;
+            height: 150px;
+            background: var(--dark-green);
+            top: -50px;
+            right: -50px;
+        }
+        
+        .decoration-2 {
+            width: 100px;
+            height: 100px;
+            background: var(--soft-brown);
+            bottom: 20px;
+            left: -30px;
+        }
+        
+        .tab-container {
+            display: flex;
+            margin-bottom: 20px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 5px;
+        }
+        
+        .tab {
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            flex: 1;
+            text-align: center;
+            font-weight: 500;
+        }
+        
+        .tab.active {
+            background: linear-gradient(135deg, var(--light-blue) 0%, var(--mint-green) 100%);
+            color: var(--text-color);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .expanded-interests {
+            margin-top: 20px;
+        }
+        
+        .interest-category {
+            margin-bottom: 25px;
+        }
+        
+        .category-title {
+            font-size: 18px;
+            color: var(--dark-green);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .category-title i {
+            margin-right: 8px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .profile-content {
+                flex-direction: column;
+            }
+            
+            .profile-name {
+                font-size: 36px;
+            }
+            
+            .profile-title {
+                font-size: 20px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .profile-header {
+                padding: 30px 20px;
+            }
+            
+            .profile-content {
+                padding: 30px 20px;
+            }
+            
+            .profile-name {
+                font-size: 32px;
+            }
+            
+            .profile-title {
+                font-size: 18px;
+            }
+            
+            .profile-photo-container {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .section-title {
+                font-size: 22px;
+            }
+            
+            .tab-container {
+                flex-direction: column;
+                gap: 5px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            
+            .profile-header {
+                padding: 25px 15px;
+            }
+            
+            .profile-content {
+                padding: 25px 15px;
+            }
+            
+            .profile-name {
+                font-size: 28px;
+            }
+            
+            .profile-title {
+                font-size: 16px;
+            }
+            
+            .profile-photo-container {
+                width: 130px;
+                height: 130px;
+            }
+            
+            .section-title {
+                font-size: 20px;
+            }
+            
+            .contact-info li {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+            
+            .contact-icon {
+                margin-right: 0;
+            }
+            
+            .language-list {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-card">
+        <div class="decoration decoration-1"></div>
+        <div class="decoration decoration-2"></div>
+        
+        <div class="profile-header">
+            <div class="profile-photo-container">
+                <img src="sujana.jpg" alt="Sujana Shahrin" class="profile-photo">
+            </div>
+            <h1 class="profile-name">Sujana Shahrin</h1>
+            <p class="profile-title">Aspiring Data Scientist & CSE Student</p>
+            <div class="university">CSE Student at IUB</div>
+        </div>
+        
+        <div class="profile-content">
+            <div class="left-section">
+                <div class="tab-container">
+                    <div class="tab active" data-tab="about">About</div>
+                    <div class="tab" data-tab="skills">Skills</div>
+                    <div class="tab" data-tab="interests">Interests</div>
+                </div>
+                
+                <div class="tab-content active" id="about-tab">
+                    <h2 class="section-title"><i class="fas fa-user"></i> About Me</h2>
+                    <p class="about-text">
+                        I'm a passionate final year Computer Science and Engineering student at Independent University, Bangladesh (IUB). 
+                        With extensive experience in programming and a strong interest in data science, I'm working towards my goal of becoming a data scientist.
+                        I enjoy transforming complex data into meaningful insights and creating solutions that make a real life difference.
+                    </p>
+                    
+                    <div class="languages-section">
+                        <h2 class="section-title"><i class="fas fa-language"></i> Languages</h2>
+                        <div class="language-list">
+                            <div class="language-item">
+                                <span class="language-flag">🇧🇩</span>
+                                <div>
+                                    <div class="language-name">Bangla</div>
+                                    <div class="language-level">Native Speaker</div>
+                                </div>
+                            </div>
+                            <div class="language-item">
+                                <span class="language-flag">🇺🇸</span>
+                                <div>
+                                    <div class="language-name">English</div>
+                                    <div class="language-level">Fluent</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="interests-section">
+                        <h2 class="section-title"><i class="fas fa-heart"></i> Hobbies & Interests</h2>
+                        <div class="interests-container">
+                            <div class="interest-item">
+                                <span class="interest-icon">🎨</span>
+                                <span>Drawing</span>
+                            </div>
+                            <div class="interest-item">
+                                <span class="interest-icon">🖌️</span>
+                                <span>Painting</span>
+                            </div>
+                            <div class="interest-item">
+                                <span class="interest-icon">📚</span>
+                                <span>Reading</span>
+                            </div>
+                            <div class="interest-item">
+                                <span class="interest-icon">🎬</span>
+                                <span>Movies</span>
+                            </div>
+                            <div class="interest-item">
+                                <span class="interest-icon">🐾</span>
+                                <span>Pets</span>
+                            </div>
+                            <div class="interest-item">
+                                <span class="interest-icon">👩‍🏫</span>
+                                <span>Teaching</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="skills-tab">
+                    <h2 class="section-title"><i class="fas fa-code"></i> Technical Skills</h2>
+                    <div class="skills-container">
+                        <div class="skill-chip">Python</div>
+                        <div class="skill-chip">Java</div>
+                        <div class="skill-chip">JavaScript</div>
+                        <div class="skill-chip">PHP</div>
+                        <div class="skill-chip">SQL</div>
+                        <div class="skill-chip">C++</div>
+                        <div class="skill-chip">Machine Learning</div>
+                        <div class="skill-chip">Deep Learning</div>
+                        <div class="skill-chip">AI</div>
+                        <div class="skill-chip">Image Processing</div>
+                        <div class="skill-chip">Cloud Computing</div>
+                        <div class="skill-chip">Networking</div>
+                        <div class="skill-chip">Data Analysis</div>
+                    </div>
+                    
+                    <div class="leadership-section">
+                        <h2 class="section-title"><i class="fas fa-users"></i> Leadership & Organization</h2>
+                        <div class="leadership-item">
+                            <div class="leadership-title">Private Tutor</div>
+                            <div>Teaching programming and computer science concepts to students</div>
+                        </div>
+                        <div class="leadership-item">
+                            <div class="leadership-title">University Club Member</div>
+                            <div>Active participation in multiple university clubs and organizations</div>
+                        </div>
+                        <div class="leadership-item">
+                            <div class="leadership-title">Event Coordinator</div>
+                            <div>Organized university tech events with 100+ participants</div>
+                        </div>
+                        <div class="leadership-item">
+                            <div class="leadership-title">Team Leader</div>
+                            <div>Led project teams to successful completion of academic projects</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="interests-tab">
+                    <h2 class="section-title"><i class="fas fa-star"></i> Personal Interests</h2>
+                    
+                    <div class="expanded-interests">
+                        <div class="interest-category">
+                            <h3 class="category-title"><i class="fas fa-palette"></i> Creative Arts</h3>
+                            <div class="interests-container">
+                                <div class="interest-item">
+                                    <span class="interest-icon">🎨</span>
+                                    <span>Drawing</span>
+                                </div>
+                                <div class="interest-item">
+                                    <span class="interest-icon">🖌️</span>
+                                    <span>Painting</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="interest-category">
+                            <h3 class="category-title"><i class="fas fa-book-open"></i> Entertainment & Learning</h3>
+                            <div class="interests-container">
+                                <div class="interest-item">
+                                    <span class="interest-icon">📚</span>
+                                    <span>Dancing</span>
+                                </div>
+                                <div class="interest-item">
+                                    <span class="interest-icon">🎬</span>
+                                    <span>Watching Movies</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="interest-category">
+                            <h3 class="category-title"><i class="fas fa-paw"></i> Pets & Animals</h3>
+                            <div class="interests-container">
+                                <div class="interest-item">
+                                    <span class="interest-icon">🐾</span>
+                                    <span>Pet Lover</span>
+                                </div>
+                                <div class="interest-item">
+                                    <span class="interest-icon">❤️</span>
+                                    <span>Animal Welfare</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="interest-category">
+                            <h3 class="category-title"><i class="fas fa-graduation-cap"></i> Academic & Career</h3>
+                            <div class="interests-container">
+                                <div class="interest-item">
+                                    <span class="interest-icon">🎓</span>
+                                    <span>Higher Studies</span>
+                                </div>
+                                <div class="interest-item">
+                                    <span class="interest-icon">📊</span>
+                                    <span>Data Science</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="goals-section">
+                        <h3 class="goals-title"><i class="fas fa-bullseye"></i> Future Goals</h3>
+                        <p class="goals-text">
+                            My ambition is to become a skilled data scientist, leveraging the power of data to solve real-world problems. 
+                            I'm particularly interested in machine learning, deep learning, AI, Image Processing  and cloud computing. I plan to pursue higher studies
+                            to deepen my knowledge in these areas while continuing to develop my teaching skills through tutoring.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="right-section">
+                <h2 class="section-title"><i class="fas fa-address-card"></i> Contact Information</h2>
+                <ul class="contact-info">
+                    <li>
+                        <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                        <div class="contact-details">
+                            <span class="contact-type">Phone</span>
+                            <span class="contact-value">+8801307898952</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                        <div class="contact-details">
+                            <span class="contact-type">Personal Email</span>
+                            <span class="contact-value">sujanashahrin1@gmail.com</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="contact-icon"><i class="fas fa-university"></i></div>
+                        <div class="contact-details">
+                            <span class="contact-type">University Email</span>
+                            <span class="contact-value">2220836@iub.edu.bd</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div class="contact-details">
+                            <span class="contact-type">Location</span>
+                            <span class="contact-value">Dhaka, Bangladesh</span>
+                        </div>
+                    </li>
+                </ul>
+                
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/sujana-shahrin-b698b3374?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.facebook.com/share/1X1dzpeMRi/" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://github.com/sujana008" class="social-link"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Tab functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabs = document.querySelectorAll('.tab');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const tabId = tab.getAttribute('data-tab');
+                    
+                   
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tabContents.forEach(content => content.classList.remove('active'));
+                    
+                    
+                    tab.classList.add('active');
+                    document.getElementById(`${tabId}-tab`).classList.add('active');
+                });
+            });
+            
+            
+            const skillChips = document.querySelectorAll('.skill-chip');
+            skillChips.forEach(chip => {
+                chip.addEventListener('click', function() {
+                    this.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 200);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
